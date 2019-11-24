@@ -30,10 +30,27 @@
 
 <script>
 import Logo from '~/components/Logo.vue'
+import axios from 'axios'
 
 export default {
   components: {
     Logo
+  },
+  asyncData ({ params, error }) {
+    return axios.get(`https://api-v3.igdb.com/games/?fields=name,cover.url,genres.name,popularity&order=popularity:desc&expand=genres,cover`)
+      .then((res) => {
+        return { 
+          games: res.data 
+        }
+      })
+      .catch((e) => {
+        console.log(e)
+      })
+  },
+  data() {
+    return {
+
+    }
   }
 }
 </script>

@@ -1,8 +1,24 @@
 <template>
   <div>
+    <navigation></navigation>
     <nuxt />
   </div>
 </template>
+
+<script>
+import Navigation from '@/components/Navigation'
+import axios from 'axios'
+
+axios.defaults.headers.common['user-key'] = 'fd0ccab4f4039c48b06a891b596446d2'
+
+export default {
+  components: {
+    Navigation
+  }
+}
+</script>
+
+
 
 <style>
 html {
