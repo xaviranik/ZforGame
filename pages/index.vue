@@ -1,29 +1,11 @@
 <template>
-  <div class="container">
-    <div>
-      <logo />
-      <h1 class="title">
-        ZforGame
-      </h1>
-      <h2 class="subtitle">
-        Games all the way
-      </h2>
-      <div class="links">
-        <a
-          href="https://nuxtjs.org/"
-          target="_blank"
-          class="button--green"
-        >
-          Documentation
-        </a>
-        <a
-          href="https://github.com/nuxt/nuxt.js"
-          target="_blank"
-          class="button--grey"
-        >
-          GitHub
-        </a>
-      </div>
+  <div class="container mx-auto">
+    <div class="game-container">
+      <nuxt-link :to="'/games/' + game.id" v-for="game in games" :key="game.id" class="block mb-8">
+        <img :src="game.cover.url.replace('t_thumb', 't_cover_big')" alt="cover">
+        <div>{{ game.name }}</div>
+        <div>{{ game.genres[0].name }}</div>
+      </nuxt-link>
     </div>
   </div>
 </template>
